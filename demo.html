@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // window.alert("welcome to javascript tutorial");
+        console.log("welcome to javascript tutorial");
+
+        function showText() {
+          document.getElementById("show-text").style.display="block";
+        }
+
+        function hideText() {
+          document.getElementById("show-text").style.display="none";
+        }
+
+        let x, y, z;
+        x = 10;
+        y = 12;
+        z = x + y ;
+        function sumNum() {
+            document.getElementById('sum').innerHTML= "=> sum is " + z + ".";
+        }
+        </script>
+</head>    
+<body>
+
+<h2>JavaScript</h2>
+
+<p id="demo"></p><hr/>
+
+<p id="change-content">Change Text</p>
+<button type="button" onclick='document.getElementById("change-content").innerHTML="Changed to Javascript"'>Click me</button>
+<button type="button" onclick='document.getElementById("change-content").style.fontSize="35px"'>change font size</button>
+<button type="button" onclick='document.getElementById("change-content").style.display="none"'>Hide content</button><hr/>
+
+<p>Show text</p>
+<p id="show-text" style="display: none;">Welcome JavaScript</p>
+<button type="button" onclick='showText()'>click me</button>
+<button type="button" onclick="hideText()"> Hide text</button><hr/>
+
+
+<p>sum of 10 and 12</p>
+<p id="sum"></p>
+<button type="button" onclick="sumNum()">Result</button><hr/>
+
+<button type="button" onclick="displayDate()">Display Date</button>
+<p id="dates"></p><hr/>
+
+<p>string: "Atmosphere"</p>
+<p id="str-length"></p>
+<p id="slice-str"></p>
+<p id="sub-str"></p><hr/>
+
+<p id="replace-str">Please visit JavaScript!</p>
+<button onclick="replaceStr()">Try it</button><hr/>
+
+<p>=>The concat() method joins two or more strings:</p>
+<p id="concat-str"></p>
+<p id="trim-str"></p>
+<p id="trim-str-ends"></p>
+
+
+<script>
+document.getElementById("demo").innerHTML = "Welcome to JavaScript";
+
+function displayDate() {
+    document.getElementById("dates").innerHTML = Date();
+}
+
+function replaceStr() {
+    let text = document.getElementById("replace-str").innerHTML;
+    document.getElementById("replace-str").innerHTML = text.replace("JavaScript","W3Schools");
+}
+
+let text = "Atmosphere";
+document.getElementById("str-length").innerHTML = "Length of string: " +  text.length;
+part = text.slice(2,7);
+document.getElementById("slice-str").innerHTML = "String after slice: " +  part;
+sub = text.substring(2,7);
+document.getElementById("sub-str").innerHTML = "Sub-String: " +  sub;
+
+let text1 = "    Hello    ";
+let text2 = "World!";
+let text3 = text1.concat(" ",text2);
+document.getElementById("concat-str").innerHTML = text3;
+
+let text4 = text1.trim();
+document.getElementById("trim-str").innerHTML = "=>length of original: " + text1.length + " , " + "length after trim: " + text4.length;
+let text5 = text1.trimStart();
+let text6 = text1.trimEnd();
+document.getElementById("trim-str-ends").innerHTML = "=>length after trimstart: " + text5.length + " , " + "length after trimend: " + text6.length;
+
+
+</script>
+
+</body>
+</html> 

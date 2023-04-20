@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    function validateForm() {
+      let x = document.forms["myForm"]["firstname"].value;
+      if (x == "") {
+        alert("Please Enter Name");
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <h2 id="header">JavaScript Form</h2>
+
+  <form name="myForm" onsubmit="return validateForm()" method="post">
+    <span id="name1">Name:</span> <input type="text" name="firstname">
+    <input type="submit" value="Submit">
+  </form>
+
+  <p onclick="this.innerHTML = 'Text changed'">Click Here</p>
+
+  <div onmouseover="mOver(this)" onmouseout="mOut(this)"
+    style="background-color:#12525f;width:150px;height:20px;padding:40px;">
+    Mouse Over Me
+  </div>
+
+  <button onclick="myAlert()">My Alert</button><br />
+
+  <input id="id1" type="number" min="100">
+  <button onclick="myFormApi()">OK</button>
+
+  <p id="formapi"></p>
+
+  <button onclick="backBtn()">Go Back</button>
+
+  <p id="store"></p>
+
+  <h2>AJAX Text</h2>
+  <button onclick="loadDoc()">click here</button>
+  <p id="store1"></p>
+
+  <h2>Finding HTML elements by Id</h2>
+  <p id="id01">Hello JS!</p>
+  <p id="id02">Hello AJAX!</p>
+  <p id="id03">Hello XML!</p>
+
+  <p id="ajaxdemo"></p>
+
+  <canvas id="myCanvas" width="400" height="400" style="border:1px solid grey"></canvas>
+
+
+  <script>
+    document.getElementById("header").style.color = "darkblue";
+
+    function mOver(obj) {
+      obj.innerHTML = "On Mouse over"
+    }
+
+    function mOut(obj) {
+      obj.innerHTML = "On Mouse Out"
+    }
+
+    function myAlert() {
+      alert("Thank you for visiting");
+    }
+
+    function myFormApi() {
+      let text = "Value OK";
+      if (document.getElementById("id1").validity.rangeUnderflow) {
+        text = "Value too small";
+      }
+      document.getElementById("formapi").innerHTML = text;
+    }
+
+    function backBtn() {
+      window.history.go(-2);
+    }
+
+    localStorage.setItem("name", "Drashti Mamanpara");
+    document.getElementById("store").innerHTML = localStorage.getItem("name");
+
+    function loadDoc() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("store1").innerHTML = this.responseText;
+      }
+      // xhttp.open("GET", "ajax_info.txt", true);
+      // xhttp.send();
+    }
+
+    $(document).ready(function () {
+      var myElements = $("#id01");
+      $("#ajaxdemo").text("The text from the id01 paragraph is: " + myElements[0].innerHTML);
+    });
+
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.height = canvas.width;
+    ctx.transform(1, 0, 0, -1, 0, canvas.height)
+
+    const xArray = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    const yArray = [7, 8, 8, 9, 9, 9, 10, 11, 14, 14, 15];
+
+    ctx.fillStyle = "black";
+    for (let i = 0; i < xArray.length - 1; i++) {
+      let x = xArray[i] * 400 / 150;
+      let y = yArray[i] * 400 / 15;
+      ctx.beginPath();
+      ctx.ellipse(x, y, 3, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  </script>
+
+</body>
+
+</html>

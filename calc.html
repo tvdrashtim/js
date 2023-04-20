@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="calc.css">
+</head>
+
+<body>
+	<div class="container">
+		<h2>Calculator</h2>
+		<div type="text" id="display" name="answer"></div>
+		<div class="calc-btns">
+			<button class="button">AC</button>
+			<button class="button">=</button>
+			<button class="button">%</button>
+			<button class="button">DEL</button>
+			<button class="button">1</button>
+			<button class="button">2</button>
+			<button class="button">3</button>
+			<button class="button">+</button>
+			<button class="button">4</button>
+			<button class="button">5</button>
+			<button class="button">6</button>
+			<button class="button">-</button>
+			<button class="button">7</button>
+			<button class="button">8</button>
+			<button class="button">9</button>
+			<button class="button">*</button>
+			<button class="button">/</button>
+			<button class="button">0</button>
+			<button class="button">00</button>
+			<button class="button">.</button>
+		</div>
+	</div>
+
+	<script>
+		let display = document.getElementById("display");
+
+		let buttons = Array.from(document.getElementsByClassName("button"));
+		console.log(buttons);
+
+		buttons.map(button => {
+			button.addEventListener('click', (e) => {
+				console.log(e.target.innerText);
+				switch (e.target.innerText) {
+					case 'AC':
+						display.innerText = " ";
+						break;
+					case 'DEL':
+						if (display.innerText) {
+							display.innerText = display.innerText.slice(0, -1);
+						}
+						break;
+					case '=':
+						display.innerText = eval(display.innerText);
+						break;
+					default:
+						display.innerText += e.target.innerText;
+				}
+			});
+		})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+.container {
+	text-align: center;
+	margin-top: 15%;
+}
+
+h2{
+	font-size: 32px;
+	color: darkblue;
+}
+
+.calc-btns {
+	width: 17.8%;
+	margin-bottom: 4px;
+	padding-left: 41.1%;
+	text-align: center;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
+#display{
+	height: 35px;
+	margin-bottom: 5px;
+	border: 1px solid #000;
+	margin-left: 41.2%;
+	width: 16%;
+	text-align: end;
+	padding: 15px;
+	font-size: 20px;
+}
+
+.button{
+	background-color: rgb(136, 159, 158);
+	height: 50px;
+}
