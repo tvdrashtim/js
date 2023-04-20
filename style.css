@@ -21,8 +21,10 @@ h1{
     width: 282px;
 }
 
-.btn {
-    height: 60px;
-    width: 69px;
-    margin-bottom: 5px;
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: 290px;
+    height: 185px;
 }

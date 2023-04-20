@@ -7,63 +7,53 @@
 
 <body>
 	<div id="calculator">
-		<h1>Calculator</h1>
-		<div>
-			<input type="text" id="result"><br />
-			<button class="btn" value="1" onclick="addToInput('1')">1</button>
-			<button class="btn" value="2" onclick="addToInput('2')">2</button>
-			<button class="btn" value="3" onclick="addToInput('3')">3</button>
-			<button class="btn" value="+" onclick="addToInput('+')">+</button><br />
-			<button class="btn" value="4" onclick="addToInput('4')">4</button>
-			<button class="btn" value="5" onclick="addToInput('5')">5</button>
-			<button class="btn" value="6" onclick="addToInput('6')">6</button>
-			<button class="btn" value="-" onclick="addToInput('-')">-</button><br />
-			<button class="btn" value="7" onclick="addToInput('7')">7</button>
-			<button class="btn" value="8" onclick="addToInput('8')">8</button>
-			<button class="btn" value="9" onclick="addToInput('9')">9</button>
-			<button class="btn" value="*" onclick="addToInput('*')">*</button><br />
-			<button class="btn" value="0" onclick="addToInput('0')">0</button>
-			<button class="btn" value="(" onclick="addToInput('(')">(</button>
-			<button class="btn" value=")" onclick="addToInput(')')">)</button>
-			<button class="btn" value="/" onclick="addToInput('/')">/</button>
-			<button class="btn" value="AC" onclick="clearInput()">AC</button>
-			<button class="btn" value="." onclick="addToInput('.')">.</button>
-			<button class="btn" value="DEL" onclick="delToInput('DEL')" id="backspace">DEL</button>
-			<button class="btn" value="=" onclick="calculate()">=</button>
-		</div>
+		<h1 class="calculator">Calculator</h1>
+		<input type="text" id="result" placeholder="0">
+		<br><br>
+		<div id="buttons"></div>
 	</div>
 
 	<script>
-		var input = document.getElementById('result');
+		var buttons = [
+			"C", "DEL", "(", ")",
+			"7", "8", "9", "*",
+			"4", "5", "6", "-",
+			"1", "2", "3", "+",
+			"0", ".", "=", "/"
+		];
 
-		function addToInput(val) {
-			input.value += val;
+		var input = document.getElementById("result");
+
+		function createButtons() {
+			for (var i = 0; i < buttons.length; i++) {
+				var button = document.createElement("button");
+				button.innerHTML = buttons[i];
+				button.addEventListener("click", function () {
+					handleClick(this.innerHTML);
+				});
+				document.getElementById("buttons").appendChild(button);
+			}
 		}
 
-		function clearInput() {
-			input.value = '';
+		function handleClick(value) {
+			if (value == "C") {
+				input.value = "0";
+			} else if (value == "DEL") {
+				input.value = input.value.slice(0, -1);
+			} else if (value == "%") {
+				input.value = parseFloat(input.value) / 100;
+			} else if (value == "=") {
+				input.value = eval(input.value);
+			} else {
+				if (input.value == "0") {
+					input.value = value;
+				} else {
+					input.value += value;
+				}
+			}
 		}
 
-		function changeSign() {
-			input.value = -1 * input.value;
-		}
-
-		function addPercentage() {
-			input.value = input.value / 100;
-		}
-
-		function calculate() {
-			var expression = input.value;
-			var result = eval(expression);
-			input.value = result;
-		}
-
-		var backspaceButton = document.getElementById("backspace");
-		backspaceButton.addEventListener("click", function () {
-			var currentInput = input.value;
-			input.value = currentInput.substring(0, currentInput.length - 1);
-		});
-
+		createButtons();
 	</script>
 </body>
 
